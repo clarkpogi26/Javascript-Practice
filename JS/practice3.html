@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<style>
+    body {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .whole {
+        height: 200px;
+        width: 400px;
+        background: linear-gradient(to top left, red, blue);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 10px 10px 10px;
+        border: solid;
+        border-radius: 50px;
+    }
+    .fh1 {
+        font-size: 40px;
+        text-shadow: 5px 5px 0 rgb(41, 40, 40), 3px 3px 0 rgb(41, 40, 40);
+        user-select: none;
+    }
+    .input {
+        color: yellow;
+        background: linear-gradient(to top left, red, blue);
+        border-radius: 10px;
+    }
+    .output {
+        color: yellow;
+    }
+</style>
+<body>
+    <div class="whole">
+    <h1 class="fh1">To Do List</h1>
+    <input class="input" onkeydown="update()">
+    <p class="output">Result</p>
+    </div>
+</body>
+<script>
+    function update() {
+    const output = document.querySelector('.output');
+    const innput = document.querySelector('.input');
+    innput.addEventListener('input', () => {output.textContent = innput.value;});
+    }
+</script>
+</html>

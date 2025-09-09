@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+</head>
+<style>
+  body {
+    background: linear-gradient(to top right, red, blue);
+    color: white;
+    font-family: arial;
+    margin: 200px;
+    padding: 100px;
+    user-select: none;
+  }
+  .titlE {
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .move-icons {
+    width: 50px;
+    border: 3px solid white;
+    border-radius: 100px;
+    padding: 30px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  .move-buttons {
+    background-color: transparent;
+  }
+  .sj-result {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .iMove {
+    width: 50px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+  .sj-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .reset-column, .autoPlay {
+    background-color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .reset-column:hover, .autoPlay:hover {
+    background-color: lightgrey;
+  }
+  .reset-column:active, .autoPlay:active {
+    background-color: grey;
+  }
+  .container {
+    border: 10px solid red; 
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 100px;
+    padding: 100px;
+    padding-right: 300px;
+    padding-left: 300px;
+    margin: 380px;
+  }
+  .RPSmoves {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+<body>
+  <div class="container">
+  <p class="titlE">Rock Paper Scissors</p>
+<div class="RPSmoves">
+  <button onclick="playGame('rock'); finish()" class="move-buttons"><img src="RPSPNG/rock-emoji.png" class="move-icons"></button>
+  <button onclick="playGame('paper'); finish()" class="move-buttons"><img src="RPSPNG/paper-emoji.png" class="move-icons"></button>
+  <button onclick="playGame('scissors'); finish()" class="move-buttons"><img src="RPSPNG/scissors-emoji.png" class="move-icons"></button>
+  </div>
+  <p class="js-result sj-result">You Win.</p>
+  <p class="js-moves"></p>
+  <p class="js-score sj-score"></p>
+  <button class="reset-column" onclick="resetscore1(); updateScoreElement()">Reset Score</button>
+  <button class="autoPlay" onclick="autoPlay();">Auto Play</button>
+  <button class="reset-column" onclick="limits(5)">5</button>
+  <button class="reset-column" onclick="limits(10)">10</button>
+  <button class="reset-column" onclick="limits(15)">15</button>
+  <button class="reset-column" onclick="limits(20)">20</button>
+  </div>
+  <script>
+    let isAutoplaying = false;
+    let intervalID;
+  
+    function autoPlay() {
+      const autoButton = document.querySelector('.autoPlay');
+      if (!isAutoplaying) {
+    intervalID = setInterval(function() {
+      const move = pickComputerMove();
+      playGame(move);
+    }, 3000);
+      isAutoplaying = true;
+      autoButton.innerHTML = 'Auto Playing';
+    } else {
+    clearInterval(intervalID)
+    isAutoplaying = false;
+    autoButton.innerHTML = 'Auto Play';
+    }
+    
+    let limit = '10';
+    function limits(asd) {
+      limit = asd
+    };
+  }
+    function numb() {
+      score1.wins = 0;
+      score1.losses = 0;
+      score1.ties = 0;
+      }
+    const score1 = JSON.parse(localStorage.getItem('score1')) || {
+      wins: 0,
+      losses: 0,
+      ties: 0,
+    }
+    updateScoreElement();
+
+    function finish() {
+      if (score1.wins === limit) {
+        alert(`score1 has been reset. Previous score1: Wins: ${score1.wins}, Losses: ${score1.losses}, Ties: ${score1.ties}. YOU WIN!`);
+        numb();
+      } else if (score1.losses === limit) {
+        alert(`score1 has been reset. Previous score1: Wins: ${score1.wins}, Losses: ${score1.losses}, Ties: ${score1.ties}. YOU LOST!`);
+        numb();
+        updateScoreElement();
+      }
+    }
+
+    function resetscore1() {
+          if (score1.wins > score1.losses) {
+        alert(`score1 has been reset. Previous score1: Wins: ${score1.wins}, Losses: ${score1.losses}, Ties: ${score1.ties}. YOU WIN!`);
+      } else if (score1.losses > score1.wins) {
+        alert(`score1 has been reset. Previous score1: Wins: ${score1.wins}, Losses: ${score1.losses}, Ties: ${score1.ties}. YOU LOST!`);
+      } else {
+        alert(`score1 has been reset. Previous score1: Wins: ${score1.wins}, Losses: ${score1.losses}, Ties: ${score1.ties}. TIE!`);
+      } numb();
+    }
+    function playGame(playerMove) {
+      const computerMove = pickComputerMove();
+      let result = '';
+
+      if (playerMove === 'rock') {
+        if (computerMove === 'rock') {
+          result = 'tie';
+        } else if (computerMove === 'paper') {
+          result = 'you lose';
+        } else {
+          result = 'you win';
+        }
+      } else if (playerMove === 'paper') {
+        if (computerMove === 'paper') {
+          result = 'tie';
+        } else if (computerMove === 'scissors') {
+          result = 'you lose';
+        } else {
+          result = 'you win';
+        }
+      } else if (playerMove === 'scissors') {
+        if (computerMove === 'scissors') {
+          result = 'tie';
+        } else if (computerMove === 'rock') {
+          result = 'you lose';
+        } else {
+          result = 'you win';
+        }
+      }
+        if (result === 'you win') {
+      score1.wins++;
+    }
+      if (result === 'tie') {
+      score1.ties++;
+      }
+      if (result === 'you lose') {
+        score1.losses++;
+      }
+      localStorage.setItem('score1', JSON.stringify(score1));
+      updateScoreElement();
+
+      document.querySelector('.js-result')
+        .innerHTML = result;
+      
+        document.querySelector('.js-moves')
+        .innerHTML = `You 
+    <img class="iMove" src="RPSPNG/${playerMove}-emoji.png">
+    <img class="iMove" src="RPSPNG/${computerMove}-emoji.png">
+    Computer`;
+    }
+    function updateScoreElement() {
+        document.querySelector('.js-score')
+        .innerHTML = `Wins: ${score1.wins}, Losses: ${score1.losses}, Ties: ${score1.ties}.`;
+        localStorage.setItem('score1', JSON.stringify(score1));
+    }
+
+    function pickComputerMove() {
+      const randomNumber = Math.random();
+      if (randomNumber < 1/3) {
+        return 'rock';
+      } else if (randomNumber < 2/3) {
+        return 'paper';
+      } else {
+        return 'scissors';
+      }
+    }
+  </script>
+</body>
+</html>

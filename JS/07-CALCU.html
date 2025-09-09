@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <style>
+    body {
+      background-color: rgb(139, 139, 139);
+      margin: 41%;
+      background: linear-gradient(135deg, black, red);
+    }
+    .whole {
+      box-shadow: 10px 10px 10px rgb(173, 64, 64);
+      border-radius: 80px;
+      background-color:rgb(51, 42, 42);
+      border: 10px solid black;
+      border-bottom-color: rgb(70, 3, 3);
+      border-right-color: rgb(88, 15, 15);
+      background: linear-gradient(135deg, rgb(199, 70, 70), rgb(51, 42, 42));
+    }
+    button {
+      user-select: none;
+      cursor: pointer;
+      background-color: rgb(58, 58, 66);
+      font-size: 25px;
+      font-weight: bold;
+      font-family: sans-serif;
+      border-radius: 10px;
+      padding: 10px;
+      width: 65px;
+      height: 50px;
+      border-bottom-color: red;
+      border-right-color: red;
+      background: linear-gradient(330deg, red, rgb(58, 58, 66));
+    }
+    button:hover {
+      background-color: rgb(43, 43, 49);;
+    }
+    .row5 button {
+      width: 120px;
+    }
+    .parass {
+      font-size: 25px;
+      font-weight: bold;
+      justify-content: center;
+      padding: 10px;
+      background-color: red;
+      border-radius: 15px;
+      display: inline-block;
+      width: 200px;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .row1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+    }
+    .row2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+    }
+    .row3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+    }
+    .row4 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+    }
+    .row5 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+    }
+  </style>
+  <body>
+    <div class="whole">
+    <p class="parass"></p>
+    <p class="row1">
+      <button onclick="
+        updateCalculation('1');
+      ">1</button>
+
+      <button onclick="
+        updateCalculation('2');
+      ">2</button>
+
+      <button onclick="
+        updateCalculation('3');
+      ">3</button>
+
+      <button onclick="
+        updateCalculation(' + ');
+      ">+</button>
+    </p>
+
+    <p class="row2">
+      <button onclick="
+        updateCalculation('4');
+      ">4</button>
+
+      <button onclick="
+        updateCalculation('5');
+      ">5</button>
+
+      <button onclick="
+        updateCalculation('6');
+      ">6</button>
+
+      <button onclick="
+        updateCalculation(' - ');
+      ">-</button>
+    </p>
+
+    <p class="row3">
+      <button onclick="
+        updateCalculation('7');
+      ">7</button>
+
+      <button onclick="
+        updateCalculation('8');
+      ">8</button>
+
+      <button onclick="
+        updateCalculation('9');
+      ">9</button>
+
+      <button onclick="
+        updateCalculation(' * ');
+      ">*</button>
+    </p>
+
+    <p class="row4">
+      <button onclick="
+        updateCalculation('0');
+      ">0</button>
+
+      <button onclick="
+        updateCalculation('.');
+      ">.</button>
+
+      <button onclick="
+        calculation = String(eval(calculation));
+        consoleFog();
+      ">=</button>
+
+      <button onclick="
+        updateCalculation(' / ');
+      ">/</button>
+    </p>
+
+    <p class="row5">
+      <button onclick="
+        calculation = '';
+        consoleFog();
+      ">Clear</button>
+
+      <button onclick="
+        removeLast();
+        localStorage.setItem('calculation', JSON.stringify(calculation));
+        consoleFog();
+      ">Remove</button>
+      </div>
+    </p>
+    <script>
+      function removeLast() {
+        if (calculation.slice(-1) === ' ') {
+          calculation = calculation.slice(0, -3)
+        } else {
+          calculation = calculation.slice(0, -1)
+        }
+      } 
+      function consoleFog(valoo) {
+        document.querySelector('.parass')
+        .innerHTML = calculation || 0;
+      }
+      let calculation = JSON.parse(localStorage.getItem('calculation')) || '';
+      function updateCalculation(value) {
+        calculation += value;
+        consoleFog();
+        localStorage.setItem('calculation', JSON.stringify(calculation));
+      } consoleFog();
+    </script>
+  </body>
+</html>

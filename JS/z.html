@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS</title>
+  </head>
+  <style>
+    body {
+    background: #241f29;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+}
+.aAa {
+    text-decoration: none;
+}
+.latter {
+    color: red;   
+}
+span {
+    user-select: none;
+    font-size: 100px;
+    color: #fff;
+    font-family: 'Arial';
+    text-transform: uppercase;
+    display: inline-block;
+    text-shadow:
+    1px 1px 0 #ccc,
+    2px 2px 0 #bbb,
+    3px 3px 0 #aaa,
+    4px 4px 0 #999,
+    5px 5px 0 #888;
+}
+h1:hover span {
+    animation: bounce 0.4s ease infinite alternate, rainbowGlow 3s ease infinite;
+    position: relative;  
+  }
+h1:active span {                    
+    animation-play-state: paused;
+  }
+h1 span:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+h1 span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+h1 span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+h1 span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+h1 span:nth-child(6) {
+    animation-delay: 0.5s;
+  }
+  @keyframes bounce {
+  from {
+    top: -20px;
+  } to {
+    top: 20px;
+}
+}
+@keyframes rainbowGlow {
+    0%, 100% {
+    text-shadow:
+    0 0 5px red,
+    0 0 10px red,
+    0 0 20px red,
+    0 0 30px red,
+    0 0 40px red,
+    1px 1px 0 #ccc,
+2px 2px 0 #bbb,
+3px 3px 0 #aaa,
+4px 4px 0 #999,
+5px 5px 0 #888;
+    }
+14% {
+    text-shadow:
+    0 0 5px orange,
+    0 0 10px orange,
+    0 0 20px orange,
+    0 0 30px orange,
+    0 0 40px orange,
+    1px 1px 0 #ccc,
+2px 2px 0 #bbb,
+3px 3px 0 #aaa,
+4px 4px 0 #999,
+5px 5px 0 #888;
+}
+28% {
+    text-shadow:
+    0 0 5px yellow,
+    0 0 10px yellow,
+    0 0 20px yellow,
+    0 0 30px yellow,
+    0 0 40px yellow,
+    1px 1px 0 #ccc,
+2px 2px 0 #bbb,
+3px 3px 0 #aaa,
+4px 4px 0 #999,
+5px 5px 0 #888;
+}
+42% {
+    text-shadow:
+    0 0 5px green,
+    0 0 10px green,
+    0 0 20px green,
+    0 0 30px green,
+    0 0 40px green,
+    1px 1px 0 #ccc,
+2px 2px 0 #bbb,
+3px 3px 0 #aaa,
+4px 4px 0 #999,
+5px 5px 0 #888;
+}
+56% {
+    text-shadow:
+    0 0 5px blue,
+    0 0 10px blue,
+    0 0 20px blue,
+    0 0 30px blue,
+    0 0 40px blue,
+    1px 1px 0 #ccc,
+2px 2px 0 #bbb,
+3px 3px 0 #aaa,
+4px 4px 0 #999,
+5px 5px 0 #888;
+}
+70% {
+    text-shadow:
+    0 0 5px indigo,
+    0 0 10px indigo,
+    0 0 20px indigo,
+    0 0 30px indigo,
+    0 0 40px indigo,
+    1px 1px 0 #ccc,
+2px 2px 0 #bbb,
+3px 3px 0 #aaa,
+4px 4px 0 #999,
+5px 5px 0 #888;
+}
+84% {
+    text-shadow:
+    0 0 5px violet,
+    0 0 10px violet,
+    0 0 20px violet,
+    0 0 30px violet,
+    0 0 40px violet,
+    1px 1px 0 #ccc,
+2px 2px 0 #bbb,
+3px 3px 0 #aaa,
+4px 4px 0 #999,
+5px 5px 0 #888;
+}
+}
+  </style>
+  <body>
+  <h1>
+  <a onclick="
+    sandwich();
+    ">
+  <span class="letter">D</span>
+  <span class="letter">O</span>
+  <span class="letter">G</span>
+  <span class="letter">G</span>
+  <span class="letter">Y</span>
+  </a>
+  </h1>
+  <script>
+    const letters = document.querySelector('.letter');
+    function sandwich() {
+      letters.classList.toggle('latter');
+    }
+  </script>
+  </body>
+</html>

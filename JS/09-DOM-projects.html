@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Projects</title>
+    <style>
+      body {
+        font-family:Arial, Helvetica, sans-serif;
+      }
+      .cssub {
+        border: none;
+        background-color: black;
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+      .is-subscribed {
+        background-color: rgb(240, 240, 240);
+        color: black;
+      }
+      .caL {
+        background-color:rgb(231, 231, 19);
+        border: 3px solid rgb(99, 99, 13);
+        font-weight: bold;
+        padding: 10px;
+        cursor: pointer;
+      }
+      .caL:hover {
+        background-color: yellow;
+      }
+      inpuT {
+        padding: 10px;
+      }
+      .ressult {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button onclick="
+     subscribe()
+    " class="sub cssub"> Subscribe</button>
+
+    <p>Amazon Shipping Calculator</p>
+    <input onkeydown="
+    handleCostKeydown(event);
+    " class="input1 inpuT" placeholder="Cost of order">
+    <button class="caL" onclick="
+    calculateElement();
+    ">Calculate</button>
+    <p class="result1"></p>
+
+    <script>
+      String(25)
+      console.log('25' - 5);
+      console.log(Number('25') + 5);
+
+      window.document
+      window.console.log('window');
+      
+      function handleCostKeydown(event) {
+        if (event.key === 'Enter') {
+      calculateElement();
+    }
+      }
+     const input2 = document.querySelector('.input1');
+     function calculateElement() {
+      let cost = Number(input2.value);
+      if (cost <= 0) {
+        document.querySelector('.result1')
+        .innerHTML = 'Error: cost cannot be less than $1';
+        document.querySelector('.result1').classList.add('ressult');
+        return;
+      } if (cost < 40) {
+        cost = cost + 10;
+        document.querySelector('.result1').classList.remove('ressult');
+      }
+      document.querySelector('.result1').innerHTML = `Total: $${cost}`;
+    }
+
+        function subscribe() {
+            const buttonElement = document.querySelector('.sub');
+    if (buttonElement.innerText === 'Subscribe') {
+        buttonElement.innerHTML = 'Subscribed';
+        buttonElement.classList.add('is-subscribed');
+    } else {
+        buttonElement.innerHTML = 'Subscribe';
+        buttonElement.classList.remove('is-subscribed');
+    }
+        }
+        </script>
+  </body>
+</html>

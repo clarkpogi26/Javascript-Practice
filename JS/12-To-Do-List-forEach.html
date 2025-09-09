@@ -1,0 +1,216 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>To Do List</title>
+    </head>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(to top right, rgb(118, 232, 236), rgb(202, 54, 54));
+      }
+      .todo-grid, .todo-grid-input {
+        display: grid;
+        grid-template-columns: 250px 150px auto;
+      }
+      .todo-grid-input {
+        column-gap: 1px;
+        user-select: none;  
+      }
+      .rejult {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .rejults { 
+        word-wrap: break-word;
+      }
+      .buddon {
+        background-color: rgb(238, 112, 112);
+        border: 1px solid crimson;
+        user-select: none;
+        font-size: 20px;
+      }
+      .buddon:hover {
+        background-color: rgb(243, 77, 77);
+      }
+      .unite {
+        margin-left: 0.5px;
+        margin-right: 0.5px;
+        margin-top: 20px;
+        border-radius: 3px;
+      }
+      .addButton {
+        background-color: lightgreen;
+        border: 1px solid green;
+        user-select: none;
+        font-size: 20px;
+        animation: greenGlow 5s linear infinite alternate;
+      }
+      .addButton:hover {
+        background-color: rgb(54, 241, 54);
+      }
+      .resmove {
+        font-size: 100%;
+        display: block;
+        margin: 20px auto 0px auto;
+        border-radius: 6px;
+        background: linear-gradient(to top left, rgb(79, 167, 79), rgb(148, 8, 148));
+        cursor: pointer;
+        user-select: none;
+        box-shadow:
+      5px 5px 5px #000000,
+      0 8px 15px rgba(0, 0, 0, 0.3);
+      }
+      .resmove:hover {
+        background: linear-gradient(to top right, green, purple);
+        animation: wobble 0.5s linear;
+      }
+      .js-todo-scroll {
+        max-height: 300px;
+        overflow-y: auto;
+        margin-top: 10px;
+        border: none;
+        padding: 0px;
+      }
+      .js-todo-scroll::-webkit-scrollbar {
+        display: none;
+      }
+      .pdd {
+        transform: skewx(-15deg);
+        font-family: monospace;
+        font-size: 36px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        user-select: none;
+        text-shadow: 5px 5px 0 #444, 2px 2px 0px rgba(0,0,0,0.4);
+      }
+      .container {
+        background: linear-gradient(to bottom left, rgb(79, 167, 79), rgb(148, 8, 148));
+        padding: 5px 10px 15px 10px;
+        border: 3px solid black;
+        border-radius: 30px;
+      }
+      @keyframes wobble {
+      0%   { transform: translateX(0%); }
+      15%  { transform: translateX(-25%) rotate(-5deg); }
+      30%  { transform: translateX(20%) rotate(3deg); }
+      45%  { transform: translateX(-15%) rotate(-3deg); }
+      60%  { transform: translateX(10%) rotate(2deg); }
+      75%  { transform: translateX(-5%) rotate(-1deg); }
+      100% { transform: translateX(0%); }
+      }
+      @keyframes greenGlow {
+      0% {
+        box-shadow: 0 0 5px #00e676, 0 0 10px #00e676;
+      }
+      100% {
+        box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
+      }
+      }
+      #todo-name {
+        background: linear-gradient(to left, rgb(122, 7, 122), rgb(148, 8, 148));
+        border-radius: 14px;
+      }
+      #todo-date {
+        background-color: rgb(149, 247, 149);
+        border-radius: 14px;
+        animation: greenGlow 5s linear infinite alternate;
+      }
+      #todo-add {
+        border-radius: 20px;
+      }
+      #todo-minus {
+        border-radius: 20px;
+      }
+    </style>
+    <body>
+      <div class="container">
+      <p class="pdd">To Do List</p>
+      <div class="todo-grid-input unite">
+      <input id="todo-name" onkeydown="onKeydownn(event)" class="js-name-input" placeholder="Todo Name">
+      <input id="todo-date" type="date" class="js-date">
+      <button id="todo-add" class="addButton" onclick="
+      addTodo();
+      ">+</button>
+      </div>
+      <div class="js-todo-scroll">
+      <div class="js-todo-list todo-grid"></div>
+      </div>
+      <button onclick="
+      ressmove();
+      " class="resmove">Reset</button>
+      </div>
+      <script>
+          let xtodoList = JSON.parse(localStorage.getItem('todoList'));
+          let todoList = Array.isArray(xtodoList) && xtodoList.length > 0 
+          ? xtodoList : 
+          [{
+            name: 'make dinner',
+            dueDate: '2022-12-22'
+          }, {
+            name: 'wash dishes',
+            dueDate: '2022-12-22'
+          }];
+
+          function updateJSON() {
+            localStorage.setItem('todoList', JSON.stringify(todoList));
+          }
+
+          function onKeydownn(event) {
+            if (event.key === 'Enter') {
+              addTodo();
+            }
+          }
+
+          function ressmove() {
+            document.querySelector('.js-todo-list').innerHTML = '';
+            todoList = [];
+            updateJSON();
+          }
+          function renderTodoList() {
+        todoList.sort((a, b) => a.dueDate.localeCompare(b.dueDate));
+        let todoListHTML = '';
+          todoList.forEach(function(todoObject, i) {
+            const { name, dueDate } = todoObject;
+            const html = `<div class="rejults unite">${name}</div> <div class="rejult unite">${dueDate}</div>
+            <button id="todo-minus" class="buddon unite" onclick="
+              todoList.splice(${i}, 1);
+              updateJSON();
+              renderTodoList();
+              ">x</button>`;
+            todoListHTML += html;
+          });    
+          document.querySelector('.js-todo-list').innerHTML = todoListHTML;
+        };
+        
+          function addTodo() {
+            const dateInputElement = document.querySelector('.js-date');
+            const dueDate = dateInputElement.value
+            const inputElement = document.querySelector('.js-name-input');
+            const name = inputElement.value
+            if (!dueDate) {
+              alert('need a date');
+            } else if (!name) {
+              alert('need a name')
+            } else {
+            todoList.push({
+              // name: name,
+              // dueDate: dueDate
+              name,
+              dueDate
+            });
+            
+            inputElement.value = '';
+            renderTodoList();
+            updateJSON();
+          }
+          }
+          renderTodoList();
+          </script>
+    </body>
+  </html>

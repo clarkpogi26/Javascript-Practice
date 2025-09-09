@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+  <body>
+    <!--<button>First</button>
+    <button class="js-button">Second</button>
+    <button class="a9">9a</button>
+    <button class="b9">9b</button>-->
+    <button onclick="
+    headtail('Heads');
+    " class="hot">Heads</button>
+    <button onclick="
+    headtail('Tails');
+    " class="hot">Tails</button>
+    <p class="para"></p>
+
+    <input onkeydown="
+    onKeydownz();
+    " placeholder="Name" class="namez">
+    <button onclick="
+    activeAte();
+    ">Submit</button>
+    <p class="paras"></p>
+    <script>
+      const nameInput = document.querySelector('.namez');
+      function onKeydownz() {
+        if (event.key === 'Enter') {
+          activeAte();
+        }
+      }
+      function activeAte() {
+        document.querySelector('.paras').innerHTML = `Your name: ${nameInput.value}`;
+      }
+
+      const h11 = document.querySelector('.h1');
+      function headtail(hot) {
+        if (hot === 'Heads') {
+        document.querySelector('.para').innerHTML = 'You Chose: Heads';
+        } else {
+          document.querySelector('.para').innerHTML = 'You Chose: Tails';
+        }
+      }
+
+      //document.querySelector('.a9');
+      //document.querySelector('.b9').innerHTML = '9b done!';
+      /*
+        console.log(document.querySelector('button').innerHTML);
+        document.querySelector('button').innerHTML = 'Changed';
+        const buttonElem = document.querySelector('.js-button');
+        console.log(buttonElem);
+        */
+        /*
+        console.log(document.title);
+        document.title = 'changed';
+
+        console.log(document.body);
+        console.log(typeof document.body);
+
+        console.log(document.body.innerHTML);
+        document.body.innerHTML = '<button>HELLO</button>';
+        */
+        /*
+        document.body.innerHTML = 'hello';
+        document.title = 'Hood'
+        */
+        </script>
+  </body>
+</html>

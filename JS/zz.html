@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+    }
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: whitesmoke;
+        color: wheat;
+        width: 200px;
+        height: 100px;
+        user-select: none;
+        overflow: hidden;
+        font-weight: bold;
+        font-size: 150%;
+        border: 3px solid grey;
+        border-radius: 20px;
+        padding: 30px;
+        cursor: pointer;
+        position: absolute;
+        text-shadow: 2px 2px 0px black;
+        box-shadow: 2px 2px 0px black;
+    }
+    .button:not(.threeDbutton):hover {
+    animation: pop3D 0.15s forwards, move 0.15s forwards;
+    }
+    .threeDbutton {
+        text-shadow: 3px 3px 0px black;
+        box-shadow: 3px 3px 0px black;
+    }
+    @keyframes pop3D {
+      0% {
+        text-shadow: none;
+        box-shadow: none;
+      }
+      50% {
+        text-shadow: 3px 3px 0px black;
+        box-shadow: 3px 3px 0px black;
+      }
+      100% {
+        text-shadow:
+          3px 3px 0px black,
+          4px 4px 0px black,
+          5px 5px 0px black,
+          6px 6px 0px black;
+        box-shadow:
+          3px 3px 0px black,
+          4px 4px 0px black,
+          5px 5px 0px black,
+          6px 6px 0px black;
+      }
+    }
+    @keyframes move {
+        from {
+            transform: translateX(0);
+        } to {
+            transform: translateX(-18px);
+            transform: translateY(-6px);
+        }
+    }
+</style>
+<body>
+    <button onclick="timedButton(); activaAte();" class="button">Button</button>
+    <p class="parag"></p>
+    <script>
+    let setTimeoutID;
+     let beingProcessed;
+     function timedButton() {
+      const button = document.querySelector('.button');
+      const parag = document.querySelector('.parag');
+      const toptitle = document.querySelector('title');
+      if (!beingProcessed) {
+        clearInterval(setTimeoutID);
+      }
+      button.innerHTML = 'Processing';
+      beingProcessed = true;
+      
+      beingProcessed = false;
+      setTimeout(function() {
+      button.innerHTML = 'Done';
+      parag.innerHTML = 'Added';
+      toptitle.textContent = 'New Message';
+      setTimeoutID = setTimeout(function() {  
+      parag.innerHTML = '';
+      button.innerHTML = 'Button';
+      toptitle.textContent = '';
+    }, 3000)
+      }, 1000);
+    }
+    function activaAte() {
+        const threeD = document.querySelector('.button');
+        threeD.classList.add('threeDbutton');
+        setTimeout(function() {
+        threeD.classList.remove('threeDbutton');
+        }, 1000);
+    }
+</script>
+</body>
+</html>

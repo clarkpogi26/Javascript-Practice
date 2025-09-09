@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice</title>
+  </head>
+  <body>
+  <script>
+    /*
+    const nambers = [10, 20, 30];
+   // nambers[nambers.length - 1] = 99;
+    nambers[2] = 99;
+    console.log(nambers);
+
+    function getLastValue(array) {
+        const lastIndex = array.length - 1;
+        return array[lastIndex];
+      }
+      console.log(getLastValue([1, 20, 22, 24, 5]));
+      console.log(getLastValue(['hi', 'hello', 'hey']));
+
+      function arraySwap(array) {
+        const swapArray = array.length -1;
+
+        const lastValue = array[swapArray];
+        const firstValue = array[0];
+
+        array[0] = lastValue;
+        array[swapArray] = firstValue;
+
+        return array;
+      } 
+      console.log(arraySwap([1, 20, 22, 24, 5]));
+        console.log(arraySwap(['hi', 'hello', 'good']));
+
+        const nombers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        for (let i = 0; i <= 10; i += 2){
+            console.log(i);
+        }
+        for (let i = 5; i >= 0; i--) {
+        console.log(i);
+      }
+      i = 0;
+      while (i <= 10) {
+        i += 2;
+        console.log(i);
+      }
+      let i = 5;
+      while (i >= 0) {
+        i--;
+        console.log(i);
+      }
+      function addOne(array) {
+        const resultx = [];
+
+        for (let i = 0; i < array.length; i++) {
+          resultx.push(array[i] + 1);
+        }
+
+        return resultx;
+      }
+      console.log(addOne([1, 2, 3]));
+      */
+      /*
+      function addNum(array, num) {
+        const rezult = [];
+        for (let i = 0; i < array.length; i++) {
+          rezult.push(array[i] + num);
+        }
+        return rezult;
+      }
+      console.log(addNum([1, 2, 3], 2));
+      */
+     /*
+     function addArrays(array1, array2) {
+      const rexult = [];
+      for (let i = 0; i < array1.length && i < array2.length; i++) {
+        rexult.push(array1[i] + array2[i]);
+      }
+      return rexult;
+     }
+     console.log(addArrays([1, 1, 2], [1, 1, 3]));
+     console.log(addArrays([1, 2, 3], [4, 5, 6]));
+     */
+    /*
+    function countPositive(nums) {
+      let redult = [];
+      for (let i = 0; i < nums.length; i++) {
+        if (nums[i] > 0) {
+          redult++;
+        }
+      }
+      return redult;
+    }
+    console.log(countPositive([1, -3, 5]));
+    */
+   /*
+   function minMax(nums) {
+    let repult = {
+      min: nums[0],
+      max: nums[0]
+    };
+    for (let i = 0; i < nums.length; i++) {
+      const value = nums[i];
+      if (value < repult.min) {
+        repult.min = value;
+      }
+
+      if (value > repult.max) {
+            repult.max = value;
+          }
+    }
+    return repult;
+   }
+   console.log(minMax([-3, -4, -1]));
+   */
+  /*
+  let storedList = JSON.parse(localStorage.getItem('todoList'));
+        let todoList = Array.isArray(storedList) && storedList.length > 0
+        ? storedList
+        : ['make dinner', 'wash dishes'];
+        */
+  function countWords(words) {
+        const result = {};
+
+        for (let i = 0; i < words.length; i++) {
+          const word = words[i];
+          if (!result[word]) {
+            result[word] = 1;
+          } else {
+            result[word]++;
+          }
+        }
+        return result;
+      }
+
+      console.log(countWords(['apple', 'grape', 'apple', 'apple']));
+  </script>
+  </body>
+</html>

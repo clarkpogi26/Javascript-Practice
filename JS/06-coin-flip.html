@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <button onclick="
+      playGame('heads')
+    ">heads</button>
+
+    <button onclick="
+      playGame('tails')
+    ">tails</button>
+
+    <button onclick="
+    reset()
+    ">reset</button>
+
+    <script> 
+    function reset() {
+        localStorage.removeItem('scores');
+        scores.Wins = 0;
+        scores.Losses = 0;
+        console.log('Score reset:', scores);
+      }
+    const scores = JSON.parse(localStorage.getItem('scores')) || {
+        Wins: 0,
+        Losses: 0
+      };
+      function playGame(guess) {
+        const random = (Math.random());
+        const result = (random < 0.5 ? 'heads' : 'tails');
+        (guess === result) ? scores.Wins++ : scores.Losses++;
+        localStorage.setItem('score', JSON.stringify(scores));
+        console.log(scores);
+      }
+
+    </script>
+  </body>
+</html>

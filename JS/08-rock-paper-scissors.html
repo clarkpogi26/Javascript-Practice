@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+</head>
+<body>
+  <p>Rock Paper Scissors</p>
+
+  <button onclick="playGame('rock'); finish()">Rock</button>
+  <button onclick="playGame('paper'); finish()">Paper</button>
+  <button onclick="playGame('scissors'); finish()">Scissors</button>
+  <button onclick="(resetscores())">Reset</button>
+  <button onclick="limits(5)">5</button>
+  <button onclick="limits(10)">10</button>
+  <button onclick="limits(15)">15</button>
+  <button onclick="limits(20)">20</button>
+  <script>
+    let limit = '10';
+    function limits(asd) {
+      limit = asd
+    };
+    function numb() {
+      scores.wins = 0;
+      scores.losses = 0;
+      scores.ties = 0;
+      }
+    const scores = JSON.parse(localStorage.getItem('scores')) || {
+      wins: 0,
+      losses: 0,
+      ties: 0
+    };
+    function finish() {
+      if (scores.wins === limit) {
+        alert(`scores has been reset. Previous scores: Wins: ${scores.wins}, Losses: ${scores.losses}, Ties: ${scores.ties}. YOU WIN!`);
+        numb();
+      } else if (scores.losses === limit) {
+        alert(`scores has been reset. Previous scores: Wins: ${scores.wins}, Losses: ${scores.losses}, Ties: ${scores.ties}. YOU LOST!`);
+        numb();
+      }
+    }
+
+    function resetscores() {
+          if (scores.wins > scores.losses) {
+        alert(`scores has been reset. Previous scores: Wins: ${scores.wins}, Losses: ${scores.losses}, Ties: ${scores.ties}. YOU WIN!`);
+      } else if (scores.losses > scores.wins) {
+        alert(`scores has been reset. Previous scores: Wins: ${scores.wins}, Losses: ${scores.losses}, Ties: ${scores.ties}. YOU LOST!`);
+      } else {
+        alert(`scores has been reset. Previous scores: Wins: ${scores.wins}, Losses: ${scores.losses}, Ties: ${scores.ties}. TIE!`);
+      } numb();
+    }
+    function playGame(playerMove) {
+      const computerMove = pickComputerMove();
+      let result = '';
+
+      if (playerMove === 'rock') {
+        if (computerMove === 'rock') {
+          result = 'tie';
+        } else if (computerMove === 'paper') {
+          result = 'you lose';
+        } else {
+          result = 'you win';
+        }
+      } else if (playerMove === 'paper') {
+        if (computerMove === 'paper') {
+          result = 'tie';
+        } else if (computerMove === 'scissors') {
+          result = 'you lose';
+        } else {
+          result = 'you win';
+        }
+      } else if (playerMove === 'scissors') {
+        if (computerMove === 'scissors') {
+          result = 'tie';
+        } else if (computerMove === 'rock') {
+          result = 'you lose';
+        } else {
+          result = 'you win';
+        }
+      }
+        if (result === 'you win') {
+      scores.wins++;
+    }
+      if (result === 'tie') {
+      scores.ties++;
+      }
+      if (result === 'you lose') {
+        scores.losses++;
+      }
+      localStorage.setItem('scores', JSON.stringify(scores));
+
+      alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}. Wins: ${scores.wins}, Losses: ${scores.losses}, Ties: ${scores.ties}`);
+    } 
+
+    function pickComputerMove() {
+      const randomNumber = Math.random();
+      if (randomNumber < 1/3) {
+        return 'rock';
+      } else if (randomNumber < 2/3) {
+        return 'paper';
+      } else {
+        return 'scissors';
+      }
+    }
+  </script>
+</body>
+</html>

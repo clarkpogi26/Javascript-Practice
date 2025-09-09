@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cart Quantity</title>
+  </head>
+  <style>
+    .aButton {
+      border: none;
+      padding-left: 25px;
+      padding-right: 25px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: rgb(255, 216, 20);
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .aButton:hover {
+      background-color: rgb(236, 202, 32)
+    }
+    .aButton:active {
+      background-color: rgb(192, 166, 35)
+    }
+    .parashoot {
+      font-size: 30px;
+      color: darkgoldenrod;
+    }
+  </style>
+  <body>
+    <button class="aButton" onclick="
+    if (cartQuantity + 1 > 10) {
+      alert('too much')
+    } else {
+    updateCart(+1);
+    consoleLog();
+    }
+    ">Add to Cart</button>
+
+    <button class="aButton" onclick="
+    if (cartQuantity > 8) {
+      alert('too much')
+    } else {
+    updateCart(+2);
+    consoleLog();
+    }
+    ">+2</button>
+
+    <button class="aButton" onclick="
+    if (cartQuantity > 7) {
+      alert('too much')
+    } else {
+    updateCart(+3);
+    consoleLog();
+    }
+    ">+3</button>
+
+    <button class="aButton" onclick="
+    cartQuantity = 0;
+    consoleLog();
+    ">Reset Cart</button>
+
+    <button class="aButton" onclick="
+    if (cartQuantity <= 0) {
+      alert('not enough')
+    } else {
+    updateCart(-1);
+    consoleLog();
+    }
+    ">Remove</button>
+
+    <button class="aButton" onclick="
+    if (cartQuantity < 2) {
+      alert('not enough')
+    } else {
+    updateCart(-2);
+    consoleLog();
+    }
+    ">-2</button>
+
+    <button class="aButton" onclick="
+    if (cartQuantity < 3) {
+      alert('not enough')
+    } else {
+    updateCart(-3);
+    consoleLog();
+    }
+    ">-3</button>
+
+    <p class="parashoot"></p>
+
+    <script>
+      let cartQuantity = JSON.parse(localStorage.getItem('cartQuantity')) || 0;
+      function updateCart(changeCart) {
+        cartQuantity += changeCart;
+        localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+        consoleLog();
+      }
+      function consoleLog() {
+        document.querySelector('.parashoot')
+        .innerHTML = `Show quantity: ${cartQuantity}`;
+        localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+      }
+      consoleLog();
+      const classTest = document.querySelector('.parashoot');
+      console.log(classTest.classList.contains('parashoot'));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <style>
+    /*
+    .gaming-button, .music-button, .tech-button {
+      background-color: lightgray;
+      cursor: pointer;
+      padding: 5px 30px 5px 30px;
+      border-radius: 60px;
+      font-size: 50px;
+      font-weight: bold;
+    }
+    .gaming-on, .music-on, .tech-on {
+      background-color: grey;
+    }
+      */
+  </style>
+  <body>
+    <!--
+    <button onclick="testGaming('gaming');" class="gaming-button">Gaming</button>
+    <button onclick="testGaming('music');" class="music-button">Music</button>
+    <button onclick="testGaming('tech');" class="tech-button">Tech</button>
+  -->
+    <!--
+    <button onclick="
+    console.log(`Show quantity: ${cartQuantity}`);
+    ">Show Quantity</button>
+    <button onclick="
+    cartQuantity++;
+    console.log(`Show quantity: ${cartQuantity}`);
+    ">Add to cart</button>
+    <button onclick="
+    cartQuantity +=2;
+    console.log(`Show quantity: ${cartQuantity}`);
+    ">+2</button>
+    <button onclick="
+    cartQuantity = cartQuantity+3;
+    console.log(`Show quantity: ${cartQuantity}`);
+    ">+3</button>
+    <button onclick="
+    cartQuantity = 0;
+    console.log('Cart was reset');
+    console.log(`Show quantity: ${cartQuantity}`);
+    ">Reset Cart</button>
+    <button onclick="
+    cartQuantity--;
+    console.log(`Show quantity: ${cartQuantity}`);
+    ">Remove from cart</button>
+    <button onclick="
+    cartQuantity-=2;
+    console.log(`Show quantity: ${cartQuantity}`);
+    ">-2</button>
+    <button onclick="
+    cartQuantity-=3;
+    console.log(`Show quantity: ${cartQuantity}`);
+    ">-3</button>
+  -->
+    <script>
+      /*
+      let example = 'Hello';
+      let rexample = example.slice(2, -1);
+      console.log(rexample);
+      */
+      /*
+      function testGaming(category) {
+      document.querySelector('.gaming-button').classList.remove('gaming-on');
+      document.querySelector('.music-button').classList.remove('music-on');
+      document.querySelector('.tech-button').classList.remove('tech-on');
+
+      const selected = document.querySelector(`.${category}-button`);
+      selected.classList.add(`${category}-on`);
+}
+      */
+      /*
+      function comparePrice(product1, product2) {
+        if (product1.price < product2.price) {
+          return product1;
+        } else if (product2.price < product1.price) {
+          return product2;
+        }
+      }
+      function isSameProduct(product1, product2) {
+        return product1.name === product2.name &&
+          product1.price === product2.price;
+      }
+      const product1 = {
+        name: 'basketball',
+        price: 1090,
+      };
+      const product2 = {
+        name: 'basketball',
+        price: 1090
+      };
+      
+      console.log(comparePrice(product1, product2));
+      console.log(isSameProduct(product1, product2));
+      console.log(`GOOD MORNING`.toLowerCase());
+      console.log('TESTING'.repeat(2));
+      */
+      /*
+      function convertLength(length, from, to) {
+        if (from === 'km' && to === 'miles') {
+          return `${length / 1.6} miles`;
+        } else if (from === 'miles' && to === 'km') {
+          return `${length * 1.6} km`;
+        } else if (from === 'miles' && to === 'ft') {
+          return `${length * 5280} ft`;
+        } else if (from === 'ft' && to === 'miles') {
+          return `${length / 5280} miles`;
+        } else if (from === 'km' && to === 'ft') {
+          return `${length * 3280.84} ft`;
+        } else if (from === 'ft' && to === 'km') {
+          return `${length / 3280.84} km`;
+        } else if (from === to) {
+          return `${length} ${from}`;
+        } else if (['km', 'ft', 'miles'].includes(from) || ['km', 'ft', 'miles'].includes(to)) {
+          return `invalid`
+        }
+      }
+      console.log(convertLength(50, 'miles', 'km'));
+      console.log(convertLength(32, 'km', 'miles'));
+      console.log(convertLength(20, 'miles', 'ft'));
+      console.log(convertLength(5280, 'ft', 'miles'));
+      console.log(convertLength(1, 'km', 'ft'));
+      console.log(convertLength(3280.84, 'ft', 'km'));
+      console.log(convertLength(4891, 'ft', 'ft'));
+      */
+      /*
+      function convertToFahrenheit(celsius) {
+      return (celsius * 9/5) + 32;
+      }
+      console.log(convertToFahrenheit(25));
+
+      function convertToCelsius(fahrenheit) {
+      return (fahrenheit - 32) * 5 /9 ;
+      }
+      console.log(convertToCelsius(250));
+
+      function convertToTemperature(degrees, unit) {
+        if (unit === 'celsius') {
+          return (degrees - 32) * 5 /9 ;
+        } else if (unit === 'fahrenheit') {
+          return (degrees * 9/5) + 32;
+        }
+      }
+      console.log(convertToTemperature(250,'celsius'));
+      */
+      /*
+      function greet (name) {
+        if (!name) {
+          console.log('You have no name')
+        } else console.log(`Hello ${name}`)
+      }
+      greet('Clark');
+      */
+      /*
+      let cartQuantity = 0;
+      /*
+      const name = 'Clark';
+      let hour = 6;
+      if (hour >= 6 && hour <= 12) {
+        console.log(`good morning ${name}`);
+      } else if (hour >= 13 && hour <= 17) {
+        console.log(`good evening ${name}`);
+      } else console.log(`good night ${name}`);
+       */
+      /*
+      let age = 100;
+      if (age >= 0 && age <= 6) {
+        console.log('Discount');
+      } else if (age >= 65 && age <= 100) {
+        console.log('Discount');
+      } else console.log('No Discount');
+       */
+      /*
+      const isHoliday = true;
+      const age = 100;
+      if ((age <= 6 || age >= 65) && !isHoliday) {
+        console.log('Discount');
+      } else {
+        console.log('No Discount');
+      }
+        */
+       /*
+      const guess = 'Head';
+      let result = '';
+      let number = (Math.random())
+      if (number > 0.5) {
+        result = ('Head');
+      } else {
+        result = ('Tails');
+      }
+
+      if (result === guess) {
+      console.log(`Congrats, You win!`);
+        } else {
+          console.log(`You lose`);
+        }
+          */
+         /*
+    const number = (Math.random());
+     const result = number < 0.5 ? 'Heads' : 'Tails';
+
+     const guess = 'Heads';
+      console.log(guess === result ? 'You Win' : 'You Lose');
+      */
+    </script>
+  </body>
+</html>
